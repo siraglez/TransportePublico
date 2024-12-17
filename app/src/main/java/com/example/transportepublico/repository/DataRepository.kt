@@ -12,11 +12,12 @@ object DataRepository {
             if (e != null) {
                 callback(null, e.message)
             } else {
-                val paradas = snapshots?.toObjects(Parada::class.java)
-                paradas?.forEach { parada ->
-                    println("Parada: ${parada.nombre}, Líneas: ${parada.linea}, Horario: ${parada.horario}")
+                val paradasList = mutableListOf<Parada>()
+                snapshots?.forEach { document ->
+                    val parada = document.toObject(Parada::class.java)
+                    paradasList.add(parada)
                 }
-                callback(paradas, null)
+                callback(paradasList, null)
             }
         }
     }

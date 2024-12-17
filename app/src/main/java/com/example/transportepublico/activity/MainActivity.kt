@@ -12,6 +12,8 @@ import com.example.transportepublico.views.ParadaView
 
 class MainActivity : AppCompatActivity() {
 
+    private val paradasSet = mutableSetOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -29,10 +31,18 @@ class MainActivity : AppCompatActivity() {
             if (error != null) {
                 Toast.makeText(this, "Error al cargar paradas: $error", Toast.LENGTH_LONG).show()
             } else {
+                // Limpiar contenedor antes de agregar las nuevas paradas
+                paradasContainer.removeAllViews()
+
+                // Filtrar las paradas para que no se repitan
                 paradas?.forEach { parada ->
-                    val paradaView = ParadaView(this)
-                    paradaView.setParada(parada)
-                    paradasContainer.addView(paradaView)
+                    // Verificar si la parada ya fue agregada (usamos el idParada para asegurarlo)
+                    if (parada.idParada !in paradasSet) {
+                        val paradaView = ParadaView(this)
+                        paradaView.setParada(parada)
+                        paradasContainer.addView(paradaView)
+                        paradasSet.add(parada.idParada)
+                    }
                 }
             }
         }
