@@ -13,6 +13,9 @@ object DataRepository {
                 callback(null, e.message)
             } else {
                 val paradas = snapshots?.toObjects(Parada::class.java)
+                paradas?.forEach { parada ->
+                    println("Parada: ${parada.nombre}, Líneas: ${parada.linea}, Horario: ${parada.horario}")
+                }
                 callback(paradas, null)
             }
         }
