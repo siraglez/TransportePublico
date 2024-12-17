@@ -1,0 +1,10 @@
+Colección lineas:
+    - numero: Int
+    - paradas: Array
+Colección paradas:
+    - horario: Array
+    - lineas: Int
+    - nombre: String
+Colección usuarios:
+    - email: String
+    - password: String

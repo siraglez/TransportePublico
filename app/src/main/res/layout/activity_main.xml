@@ -6,10 +6,11 @@
     android:background="@color/colorBackground">
 
     <LinearLayout
-        android:id="@+id/paradasContainer"
+        android:id="@+id/lineasContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp" />
 </ScrollView>
+
 
