@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "76719015633",
+    "project_id": "transportepublico-fad96",
+    "storage_bucket": "transportepublico-fad96.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76719015633:android:144e2ee3b23d1ad54e27f0",
+        "android_client_info": {
+          "package_name": "com.example.transportepublico"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXH5M-uHYVyTbazJZymRtGm5Ou-WKbokY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
