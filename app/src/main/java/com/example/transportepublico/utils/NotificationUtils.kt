@@ -1,5 +1,6 @@
 package com.example.transportepublico.utils
 
+import android.annotation.SuppressLint
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
@@ -28,6 +29,7 @@ object NotificationUtils {
         }
     }
 
+    @SuppressLint("MissingPermission")
     fun sendNotification(context: Context, title: String, message: String) {
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
