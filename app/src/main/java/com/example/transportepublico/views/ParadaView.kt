@@ -27,7 +27,7 @@ class ParadaView(context: Context) : LinearLayout(context) {
     fun setParada(parada: Parada) {
         ivParadaIcon.setImageResource(R.drawable.ic_stop)
         tvNombreParada.text = "Parada: ${parada.nombre}"
-        tvLinea.text = "Línea: ${parada.linea}"
+        tvLinea.text = "Línea: ${parada.linea.joinToString(", ")}"
         tvHorario.text = "Horario: ${parada.horario.joinToString(", ")}"
     }
 }
