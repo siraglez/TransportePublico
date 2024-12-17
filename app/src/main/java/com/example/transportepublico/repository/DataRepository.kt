@@ -1,7 +1,6 @@
 package com.example.transportepublico.repository
 
 import com.example.transportepublico.dataClasses.Parada
-import com.example.transportepublico.dataClasses.Linea
 import com.google.firebase.firestore.FirebaseFirestore
 
 object DataRepository {
@@ -12,23 +11,17 @@ object DataRepository {
             if (e != null) {
                 callback(null, e.message)
             } else {
-                val paradasList = mutableListOf<Parada>()
-                snapshots?.forEach { document ->
+                // Mapear los documentos de Firebase a objetos Parada
+                val paradas = snapshots?.documents?.map { document ->
                     val parada = document.toObject(Parada::class.java)
-                    paradasList.add(parada)
-                }
-                callback(paradasList, null)
-            }
-        }
-    }
+                    parada?.let {
+                        it.idParada = document.id
+                        return@map it  // Devuelve el objeto parada modificado
+                    }
+                    return@map null
+                }?.filterNotNull() // Elimina los nulos que puedan quedar en la lista
 
-    fun getLineasEnTiempoReal(callback: (List<Linea>?, String?) -> Unit) {
-        db.collection("lineas").addSnapshotListener { snapshots, e ->
-            if (e != null) {
-                callback(null, e.message)
-            } else {
-                val lineas = snapshots?.toObjects(Linea::class.java)
-                callback(lineas, null)
+                callback(paradas, null)
             }
         }
     }
